@@ -1,6 +1,22 @@
+/**
+ * Checks if the given element is a valid input field for AI autocompletion.
+ * A valid input field is a textarea or an input field of type 'text' that is not of type 'password' or 'email'.
+ *
+ * @param {HTMLElement} element - The DOM element to check.
+ * @returns {boolean} True if the element is a valid input field, false otherwise.
+ */
+function isValidInputField(element) {
+  return element.tagName.toLowerCase() === 'textarea' || 
+         (element.tagName.toLowerCase() === 'input' && 
+         element.type !== 'password' && 
+         element.type !== 'email' && 
+         element.type === 'text');
+}
+
+
 // Listen for focus events on textboxes
 document.addEventListener('focus', event => {
-  if (event.target.tagName.toLowerCase() === 'textarea' || (event.target.tagName.toLowerCase() === 'input' && event.target.type === 'text')) {
+  if (isValidInputField(event.target)) {
     // Extract meaningful information from the page
     const title = document.title;
     const description = document.querySelector('meta[name="description"]')?.content || '';
@@ -13,7 +29,7 @@ document.addEventListener('focus', event => {
 
 // Listen for input events on textboxes
 document.addEventListener('input', event => {
-  if (event.target.tagName.toLowerCase() === 'textarea' || (event.target.tagName.toLowerCase() === 'input' && event.target.type === 'text')) {
+  if (isValidInputField(event.target)) {
     // Send a message to the background script
     chrome.runtime.sendMessage({type: 'TEXT_BOX_UPDATED', textBoxContent: event.target.value});
   }
@@ -28,7 +44,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     // We'll insert the completion into the currently active (focused) element
     let textBox = document.activeElement;
     // But only if that element is a textbox or a textarea
-    if (textBox.tagName.toLowerCase() === 'textarea' || (textBox.tagName.toLowerCase() === 'input' && textBox.type === 'text')) {
+    if (isValidInputField(textBox)) {
       // We'll first get the current text in the textbox
       let userText = textBox.value;
       // Then we'll create a new span element to hold the completion
