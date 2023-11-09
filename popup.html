@@ -6,5 +6,14 @@
 <body>
   <h1>AI Quick Fill</h1>
   <p>Activate the plugin by focusing on a textbox. The plugin will automatically suggest completions for your text.</p>
+    <h1>Settings</h1>
+    <form id="settingsForm">
+      <label for="apiKey">OpenAI API Key:</label><br>
+      <input type="text" id="apiKey" name="apiKey"><br>
+      <label for="modelTemp">Model Temperature:</label><br>
+      <input type="text" id="modelTemp" name="modelTemp"><br>
+      <input type="submit" value="Save">
+    </form>
+  <script src="options.js"></script>
 </body>
 </html>
