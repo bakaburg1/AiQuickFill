@@ -1,0 +1,17 @@
+/* content.css */
+
+#AIQuickFill_myTooltip {
+    position: absolute;
+    padding: 0.5rem;
+    background: #f9f9f9;
+    color: #006ee0;
+    border: 2px solid #006ee0;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.2);
+    border-radius: 0.5rem;
+    animation: AIQuickFill_fadeIn 0.5s;
+    will-change: opacity;
+  }
+  @keyframes AIQuickFill_fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }

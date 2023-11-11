@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "AI Quick Fill",
   "description": "This extension autocompletes text in textboxes using LLM models.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "permissions": ["activeTab", "storage"],
   "icons": { 
     "16": "images/icon16.png",
@@ -23,7 +23,8 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["content.js", "helpers.js"],
+      "css": ["content.css"]
     }
   ]
 }

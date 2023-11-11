@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>AI Quick Fill</title>
+  <script defer src="options.js" type="module"></script>
 </head>
 <body>
   <h1>AI Quick Fill</h1>
@@ -11,8 +12,7 @@
       <label for="apiKey">OpenAI API Key:</label><br>
       <input type="text" id="apiKey" name="apiKey"><br>
       <label for="modelTemp">Model Temperature:</label><br>
-      <input type="text" id="modelTemp" name="modelTemp" value="0.3"><br>
+      <input type="number" id="modelTemp" name="modelTemp" min="0" max="2"><br>
     </form>
-  <script src="options.js"></script>
 </body>
 </html>

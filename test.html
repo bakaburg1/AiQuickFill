@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>curve_fit with a catenary returns huge pars, for no apparent reason</title>
+</head>
+<body>
+	<p>I have taken a picture of a chain, sampled the position of every single ring of such chain in pixel, in oreder to get the best-fit pars for a catenary of model a*cosh((x-x0)/a) + c, where a, c and x0 are the pars im looking for.
+
+        When plotting my sampled points onto the original pictuare they coincide with the chain, but the pars i get are many thousand times what i'd expect.
+        
+        from matplotlib import pyplot as plt
+        from scipy.optimize import curve_fit
+        import numpy as np
+        import matplotlib
+        
+        fname="C:/Users/marti/OneDrive/Desktop/Pier/Catenaria.txt"    #directory and file name
+        plt.xlabel("x [pixels]")
+        plt.ylabel("y [pixels]")
+        plt.imshow(img)
+        
+        
+        
+        
+        x,y=np.loadtxt(fname, unpack=True)
+        
+        sigma_y=3.
+        plt.errorbar(x, y, sigma_y, fmt=".")
+        
+        def cat(x, a, c, x0):
+            return c + a * np.cosh((x - x0) / a)
+        
+        popt, pcov = curve_fit(cat, x, y, p0=(1800.,500., 2052.))
+        a_hat, c_hat, x0_hat = popt
+        sigma_a, sigma_c, sigma_x0 = np.sqrt(pcov.diagonal())
+        print(a_hat, sigma_a, c_hat, sigma_c, x0_hat, sigma_x0)
+        plt.plot(x, cat(x, a_hat, c_hat, x0_hat))
+        
+        
+        
+        
+        plt.show().</p>
+	<textarea></textarea>
+</body>
+</html>
