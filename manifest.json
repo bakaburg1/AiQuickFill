@@ -24,7 +24,7 @@
     {
       "matches": ["<all_urls>"],
       "js": ["content.js", "helpers.js"],
-      "css": ["content.css"]
+      "css": ["libraries/style.css"]
     }
   ]
 }
