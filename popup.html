@@ -2,17 +2,65 @@
 <html>
 <head>
   <title>AI Quick Fill</title>
-  <script defer src="options.js" type="module"></script>
+  <link rel="stylesheet" href="libraries/bootstrap.min.css">
+  <link rel="stylesheet" href="libraries/style.css">
 </head>
 <body>
-  <h1>AI Quick Fill</h1>
-  <p>Activate the plugin by focusing on a textbox. The plugin will automatically suggest completions for your text.</p>
-    <h1>Settings</h1>
-    <form id="settingsForm">
-      <label for="apiKey">OpenAI API Key:</label><br>
-      <input type="text" id="apiKey" name="apiKey"><br>
-      <label for="modelTemp">Model Temperature:</label><br>
-      <input type="number" id="modelTemp" name="modelTemp" min="0" max="2"><br>
-    </form>
+    <div class="container" id="AIQuickFill_popup">
+        <div ID="Main">
+            <h1>AI Quick Fill</h1>
+            <p>Activate the extensions by focusing on a textbox. The extensions will automatically suggest completions for your text.</p>
+            <div class="d-flex justify-content-center">
+                <div class="form-check form-switch">
+                    <!-- <div class="col-auto"> -->
+                        <label class="form-check-label" for="extensionSwitch">Status: <span class="activationStatus"></span></label>
+                    <!-- </div> -->
+                    <!-- <div class="col-auto"> -->
+                        <input class="form-check-input" type="checkbox" id="extensionSwitch">
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+        <a class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" data-bs-target="#Settings">
+            Settings <span id="caret">&#9660;</span>
+        </a>
+        <hr>
+        <form id="Settings" class="">
+            <div class="row mb-2 align-items-center">
+                <div class="col-5">
+                    <label for="modelTemp" class="col-form-label">Temperature:</label>
+                </div>
+                <div class="col-7 slider_w_handle">
+                    <input type="range" class="form-range" id="modelTemp" name="modelTemp" min="0" max="2" step="0.1" value>
+                    <div class="bar"></div>
+                    <span class="handle" data-input="modelTemp"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-5">
+                    <label for="apiKey" class="col-form-label">OpenAI API Key:</label>
+                </div>
+                <div class="col-7">
+                    <input type="text" id="apiKey" name="apiKey" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-5">
+                    <label for="endpoint" class="col-form-label">OpenAI Endpoint:</label>
+                </div>
+                <div class="col-7">
+                <input class="form-control" list="endpoints" id="endpoint" placeholder="Type to search..." value="gpt-4-1106-preview">
+                <datalist id="endpoints">
+                    <option value="gpt-4-1106-preview">
+                    <option value="gpt-4">
+                    <option value="gpt-3.5-turbo">
+                </datalist>
+            </div>
+        </form>
+    </div>
+    <script src="options.js" type="module"></script>
+    <script src="libraries/bootstrap.min.js"></script>
+    <script src="libraries/jquery.min.js"></script>
+    <script src="libraries/custom_slider.js"></script>
 </body>
 </html>

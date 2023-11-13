@@ -1,0 +1,72 @@
+/* content.css */
+
+#AIQuickFill_myTooltip {
+  position: absolute;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  color: #006ee0;
+  border: 2px solid #006ee0;
+  box-shadow: 0 0 0.5rem rgba(0,0,0,0.2);
+  border-radius: 0.5rem;
+  animation: AIQuickFill_fadeIn 0.5s;
+  will-change: opacity;
+}
+@keyframes AIQuickFill_fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#AIQuickFill_popup.container {
+  width: 26rem;
+  padding-right: calc(var(--bs-gutter-x) * 1);
+  padding-left: calc(var(--bs-gutter-x) * 1);
+}
+
+#AIQuickFill_popup #Main .form-switch .form-check-input {
+  width: 4rem;
+}
+
+#AIQuickFill_popup #Main .form-check-input {
+  height: 2rem;
+}
+
+#AIQuickFill_popup #Main label{
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+.slider_w_handle {
+  position: relative;
+}
+
+.slider_w_handle input{
+  visibility: hidden;
+}
+
+.slider_w_handle .handle {
+  position: absolute;
+  border-radius: 100%;
+  /*border: #0d6efd solid 4px;*/
+  border-width: 4px;
+  border-style: solid;
+  min-width: 2.6rem;
+  text-align: center;
+  padding: 0.3rem;
+  background-color: white;
+  margin: -0.5em 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slider_w_handle .handle:active {
+  border-color: #0dcaf0;
+}
+
+.slider_w_handle .bar {
+    position: absolute;
+    height: 0.5rem;
+    background-color: lightgray;
+    width: 90%;
+    top: 0.5rem;
+    border-radius: 2rem;
+}
